@@ -6,6 +6,10 @@
   <description>ロボットシステム学のやつ</description>
   <maintainer email="ryu073000@i.softbank.jp">ryu07</maintainer>
   <license>BSD-3-Clause</license>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
@@ -13,6 +17,6 @@
   <test_depend>python3-pytest</test_depend>
 
   <export>
-    <build_type>ament_python</build_type>
+	  <build_type>ament_python</build_type>
   </export>
 </package>
