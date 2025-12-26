@@ -13,6 +13,7 @@ def generate_launch_description():
         package='mypkg',
         executable='client',
         output='screen'        #ログを端末に出すための設定
-         )
+        arguments=['successful_pass737300']
+        )
  
     return launch.LaunchDescription([server, client])   
