@@ -1,4 +1,5 @@
-# SPDX-FileCopyrightText: 2025 Your Name <your.email@example.com>
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Ryuta Kawamoto ryu073000@i.softbank.jp
 # SPDX-License-Identifier: BSD-3-Clause
 
 import rclpy
@@ -11,11 +12,10 @@ class QueryService(Node):
         self.srv = self.create_service(Query, 'query', self.query_callback)
         self.get_logger().info('Password Authentication Service Ready.')
         
-        # ここが正解のパスワードです
         self.correct_password = "successful_pass737300"
 
     def query_callback(self, request, response):
-        # 受け取ったパスワードを確認
+
         if request.password == self.correct_password:
             response.access_granted = True
             response.message = "Login Successful! Welcome to the system."

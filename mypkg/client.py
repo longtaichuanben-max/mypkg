@@ -1,4 +1,5 @@
-# SPDX-FileCopyrightText: 2025 Your Name <your.email@example.com>
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Ryuta Kawamoto ryu073000@i.softbank.jp
 # SPDX-License-Identifier: BSD-3-Clause
 
 import sys
@@ -24,16 +25,14 @@ def main():
     rclpy.init()
     node = QueryClient()
 
-    # コマンドライン引数からパスワードを取得
     if len(sys.argv) > 1:
         input_password = sys.argv[1]
     else:
-        # 引数がなければデフォルトで間違ったパスワードを送ってみる
+
         input_password = "wrong_password"
 
     response = node.send_request(input_password)
 
-    # 結果を表示
     if response.access_granted:
         node.get_logger().info(f'[SUCCESS] {response.message}')
     else:
