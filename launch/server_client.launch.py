@@ -12,8 +12,8 @@ def generate_launch_description():
     client = launch_ros.actions.Node(
         package='mypkg',
         executable='client',
-        output='screen'        #ログを端末に出すための設定
-        arguments=['successful_pass737300']
+        output='screen',        #ログを端末に出すための設定
+        arguments=['successful_pass737300'],
         )
  
     return launch.LaunchDescription([server, client])   
