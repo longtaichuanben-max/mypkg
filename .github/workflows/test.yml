@@ -3,9 +3,9 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-24.04
-    container: ryuichiueda/ubuntu24.04-ros2:latest
+    container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: build and test
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
