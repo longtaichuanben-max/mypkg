@@ -15,6 +15,7 @@ jobs:
           cd $HOME/ros2_ws
           rosdep update
           rosdep install -i --from-path src --rosdistro humble -y
+          source /opt/ros/humble/setup.bash
           colcon build
           source install/setup.bash
           bash -xv src/mypkg/test/test.bash $HOME
