@@ -2,12 +2,32 @@ name: test
 on: push
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
       - uses: actions/checkout@v3
       - name: build and test
+        shell: bash
         run: |
-          rsync -av ./ /root/ros2_ws/src/mypkg/
-          cd /root/ros2_ws
-          bash -xv ./src/mypkg/test/test.bash /root
+          # 1. ワークスペースの準備 ($HOMEを使うので安全！)
+          mkdir -p $HOME/ros2_ws/src
+          
+          # 2. mypkg をコピー
+          cp -r . $HOME/ros2_ws/src/mypkg/
+          
+          # 3. person_msgs をダウンロード
+          cd $HOME/ros2_ws/src
+          git clone https://github.com/longtaichuanben-max/person_msgs.git
+          
+          # 4. 依存関係の解決
+          cd $HOME/ros2_ws
+          rosdep update
+          rosdep install -i --from-path src --rosdistro humble -y
+          
+          # 5. ビルド
+          source /opt/ros/humble/setup.bash
+          colcon build
+          
+          # 6. テスト実行
+          source install/setup.bash
+          bash -xv src/mypkg/test/test.bash $HOME
