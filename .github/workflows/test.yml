@@ -10,18 +10,8 @@ jobs:
         run: |
           mkdir -p $HOME/ros2_ws/src
           cp -r . $HOME/ros2_ws/src/mypkg/
-          
           cd $HOME/ros2_ws/src
-          git clone git clone https://github.com/longtaichuanben-max/person_msgs.git
-          
-          # ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-          # 【ここが確認ポイント！】
-          # srcフォルダの中身を全部表示します
-          echo "=== 📂 ディレクトリの中身確認 📂 ==="
-          ls -R $HOME/ros2_ws/src
-          echo "==================================="
-          # ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-
+          git clone https://github.com/longtaichuanben-max/person_msgs.git
           cd $HOME/ros2_ws
           rosdep update
           rosdep install -i --from-path src --rosdistro humble -y
