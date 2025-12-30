@@ -1,38 +1,30 @@
 # mypkg
+[![test](https://github.com/longtaichuanben-max/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/longtaichuanben-max/mypkg/actions/workflows/test.yml)
 
-# mkcon
-![test](https://github.com/longtaichuanben-max/robosys2025/actions/workflows/test.yml/badge.svg)
-## インストール方法
-以下のコマンドをターミナルで入力してください。
-```
-$ git clone https://github.com/longtaichuanben-max/robosys2025.git
-$ cd robosys2025
-```
-## 食べ物リストの形式例
-"食べ物名 カロリーの数値"のように半角スペース空けて行ごとに情報を記入してください。
+ROS2で動作する、シンプルなパスワード認証システム（サーバー・クライアント）のパッケージです。
+カスタムサービス定義パッケージ`person_msgs`を使用して通信を行います。
 
-例
-```
-apple 80
-banana 84
-アジ 144
-```
-## 実行例
-例：標準入力からテキストファイルを渡すと、指定の形式で入力されたテキストファイルのカロリーの合計値を出力します。例として上記の形式例の内容を渡す。
+## 概要
+クライアントがパスワードを送信し、サーバーがその正誤を判定して結果を返す仕組みを実装しています。
 
-入出力
-```
-$ cat test.txt | ./mkcon
-308.0
-```
-例：カロリーの合計値が日本人男性のカロリー摂取量である2650kcalを超えていた場合は以下のように
-空白が出力されます。例として摂取カロリーの合計が3080kcalであった場合を挙げます。
-```
+## ノードとサービス
+### server
+クライアントからのパスワード照会を受け付け、認証結果を返します。
+* **サービス**: `query` [person_msgs/srv/Query]
+  * 入力: `password` (String)
+  * 出力: `access_granted` (Bool), `message` (String)
 
-```
+### client
+サーバーに対してパスワードを送信し、結果をログに表示します。
+
+## 実行方法
+### 1. 依存パッケージの準備
+このパッケージは、カスタムメッセージ定義 `person_msgs` を使用します。
+ビルドする前に、ワークスペースの `src` ディレクトリに以下のリポジトリをクローンしてください。
+
+
 ## 必要なソフトウェア
 - Python
-  -テスト済みバージョン: 3.7~3.14
 - Ubuntu 24.04 LTS
 ## テスト環境
 - Ubuntu 24.04 LTS
