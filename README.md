@@ -29,7 +29,7 @@ $git clone https://github.com/longtaichuanben-max/person_msgs.git
 ### 正解のパスワード設定
 self.correct_password = "password" <--#任意の正解のパスワード
 ```
-ターミナルで以下のclient.pyを実行します。sever.pyの実行を待ちます。
+ターミナルで以下のclient.pyを実行します。sever.pyの返事を待ちます。
 ```
 $ros2 run mypkg client password <--#任意の判別したいパスワード
 ```
@@ -39,6 +39,7 @@ $ros2 run mypkg server
 ```
 ## パスワードの正誤判別
 client：正誤判別の結果表示
+
 待機中
 ```
 [INFO] [1767155840.258443790] [client]: 通信中:serverを待っています...
