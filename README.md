@@ -20,7 +20,49 @@ ROS2で動作する、シンプルなパスワード認証システム（サー�
 ## 実行方法
 ### 1. 依存パッケージの準備
 このパッケージは、カスタムメッセージ定義 `person_msgs` を使用します。
-ビルドする前に、ワークスペースの `src` ディレクトリに以下のリポジトリをクローンしてください。
+ビルドする前に、ワークスペースのディレクトリに以下のリポジトリをクローンしてください。
+```
+$git clone https://github.com/longtaichuanben-max/person_msgs.git
+```
+ターミナルでserver.pyを開き任意の正解のパスワード設定を行います。
+```
+### 正解のパスワード設定
+self.correct_password = "password" <--#任意の正解のパスワード
+```
+ターミナルで以下のclient.pyを実行します。sever.pyの実行を待ちます。
+```
+$ros2 run mypkg client password <--#任意の判別したいパスワード
+```
+次に新しいターミナルで以下のコマンドによりserver.pyを実行します。
+```
+$ros2 run mypkg server
+```
+## パスワードの正誤判別
+client：正誤判別の結果表示
+待機中
+```
+[INFO] [1767155840.258443790] [client]: 通信中:serverを待っています...
+```
+正解
+```
+[INFO] [1767155840.511105936] [client]: [SUCCESS] Login Successful!
+```
+誤り
+```
+[INFO] [1767157105.771317182] [client]: [FAILED] Access Denied: Incorrect password.
+```
+## server_client.launch.py
+ターミナルで以下のコマンドよりlaunchファイルを実行することでclientとserverを同時に立ち上げ判別が可能です。
+### 判別するパスワード設定
+server_client.launch.pyの以下の箇所を任意の判別したいパスワードに書き換えます。
+```
+arguments=['password'],
+```
+実行
+```
+$cd launch
+$ros2 launch mypkg server_client.launch.py
+```
 
 
 ## 必要なソフトウェア
