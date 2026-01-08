@@ -20,7 +20,7 @@ ROS2で動作する、シンプルなパスワード認証システム（サー�
 ## 実行方法
 ### 1. 依存パッケージの準備
 このパッケージは、カスタムメッセージ定義 `person_msgs` を使用します。
-ビルドする前に、ワークスペースのディレクトリに以下のリポジトリをクローンしてください。
+ビルドする前に、ワークスペースにsrcディレクトリを作り、以下のリポジトリをクローンしてください。
 ```
 $git clone https://github.com/longtaichuanben-max/person_msgs.git
 ```
@@ -38,17 +38,12 @@ $ros2 run mypkg server
 ```
 ## パスワードの正誤判別
 client：正誤判別の結果表示
-
-待機中
 ```
+#待機中
 [INFO] [1767155840.258443790] [client]: 通信中:serverを待っています...
-```
-正解
-```
+#正解
 [INFO] [1767155840.511105936] [client]: [SUCCESS] Login Successful!
-```
-誤り
-```
+#誤り
 [INFO] [1767157105.771317182] [client]: [FAILED] Access Denied: Incorrect password.
 ```
 ## server_client.launch.py
@@ -68,6 +63,7 @@ $ros2 launch mypkg server_client.launch.py
 ## 必要なソフトウェア
 - Python
 - Ubuntu 24.04 LTS
+- ROS2
 ## テスト環境
 - Ubuntu 24.04 LTS
 ## ライセンス
